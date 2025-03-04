@@ -39,4 +39,4 @@ Se billedet for reference.
 
 Find link til din løsning på Netlify og aflever det på Fronter.
 
-Link-struktur: **no-classes--**[Dit unikke netlify link].netlify.app/
+Link-struktur: **no-classes--**[no-classes--imaginative-dasik-f107cc.netlify.app/].netlify.app/
