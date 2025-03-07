@@ -38,7 +38,7 @@ Når du har implementeret ovenstående ændringer, eksperimenter med at ændre s
 
 Find linket til din løsning på Netlify og aflever det på Fronter.
 
-Link-struktur: **responsive-container--**[Dit unikke netlify link].netlify.app/
+Link-struktur: **responsive-container--**[responsive-container--imaginative-dasik-f107cc.netlify.app/].netlify.app/
 
 ![c1](./assets/c1.png)
 

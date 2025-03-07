@@ -1,53 +1,141 @@
-li,
-main,
-aside {
-    /* Sæt container-type */
-}
-
 ul {
-    display: grid;
-    gap: 1rlh;
-    padding-block: 1rlh;
+  display: grid;
+  gap: 1rlh;
+  padding-block: 1rlh;
 
-    /* Tilføj container regel, når width > 700px */
-    /* - Indstil 2 kolonner */
-    /* - Sæt det første barn til `grid-column: span 2` */
+  :has(> &) {
+    container-type: inline-size;
+  }
+
+  @container (width > 700px) {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 article {
+  display: grid;
+  gap: 1rlh;
+  padding: 1rlh;
+  background: #cceeff;
+  border: var(--border-width, 1px) solid #99ddff;
+  font-size: clamp(1rem, 3cqw, 1.25rem);
+
+  :is(aside) & {
+    background: #ffdbff;
+    border: 1px solid #cc66ff;
+  }
+
+  & h3 {
+    font-size: 1.5em;
+    margin-bottom: 0.4lh;
+  }
+
+  & p + p {
+    margin-top: 0.4lh;
+  }
+
+  :has(> &) {
+    container-type: inline-size;
+  }
+
+  :nth-last-child(odd):first-child:has(> &) {
+    grid-column: 1 / -1;
+  }
+
+  @container (width > 500px) {
+    grid-template-columns: 1fr 1fr;
+
+    :nth-child(even) > & img {
+      order: 1;
+    }
+  }
+}
+
+@layer demo {
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
     display: grid;
+    grid-template-columns: 1fr minmax(0px, 1200px) 1fr;
     gap: 1rlh;
-    padding: 1rlh;
-    background: #cceeff;
-    border: 1px solid #99ddff;
-    font-size: clamp(1rem, 3cqw, 1.25rem);
+    padding-block: 1rlh;
+    font-family: system-ui;
+    line-height: 1.5;
 
-    aside & {
-        background: #ffdbff;
-        border: 1px solid #cc66ff;
+    > * {
+      grid-column: 2;
+    }
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  img {
+    inline-size: 100%;
+    display: block;
+    object-fit: cover;
+    align-self: stretch;
+    aspect-ratio: 1.3;
+  }
+
+  h1,
+  h2,
+  h3 {
+    line-height: 1.125;
+  }
+
+  .content-wrapper {
+    :has(> &) {
+      container-type: inline-size;
     }
 
-    h3 {
-        font-size: 1.5em;
-        margin-bottom: .4lh;
+    @container (width > 700px) {
+      display: grid;
+      grid-template-columns: 1fr 250px;
+      gap: 1rlh;
     }
-
-    p+p {
-        margin-top: .4lh;
-    }
-
-
-    /* Tilføj container regel når width > 500px */
-    /* - Indstil 2 kolonner */
-    /* - Sæt `order: 1;` på img på hvert andet card */
+  }
 }
 
-/* Læg mærke til, at vi bør stadig bruge @media, når det handler om viewporten */
-.content-wrapper {
-
-    @media (width > 700px) {
-        display: grid;
-        grid-template-columns: 1fr 250px;
-        gap: 1rlh;
-    }
+/*html::before {
+  grid-column: 1 / -1;
+  content: '';
+  block-size: 1rlh;
+  background: red;
+  position: fixed;
+  top: 0;
+  left: 0;
+  inline-size: 100%;
+  z-index: 10;
+  transform-origin: left;
+  animation: progress linear both;
+  animation-timeline: scroll();
 }
+
+@keyframes progress {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    translate: 0 50%;
+    scale: .8;
+  }
+}
+
+li {
+  transform-origin: top;
+  animation: fade-in linear forwards;
+  animation-timeline: view();
+  animation-range: cover 0% entry 100%;
+}*/
