@@ -42,4 +42,4 @@ Lær mere om det på [MDN](https://developer.mozilla.org/en-US/docs/Glossary/Gri
 
 Find linket til din løsning på Netlify og aflever det på Fronter.
 
-Link-struktur: **subgrid-caption--**[Dit unikke netlify link].netlify.app/
+Link-struktur: **subgrid-caption--**[subgrid-caption--imaginative-dasik-f107cc.netlify.app/]
