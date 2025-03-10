@@ -2,19 +2,49 @@
 const { cardContent } = Astro.props;
 ---
 
-<ul class="full-width">
-  {
-    cardContent.map((card) => (
-      <li>
-        <h3>{card.title}</h3>
-        <p>{card.body}</p>
-      </li>
-    ))
-  }
-</ul>
+<div class="scroll-wrapper">
+  <ul class="scrolling-container">
+    {
+      cardContent.map((card) => (
+        <li class="card">
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </li>
+      ))
+    }
+  </ul>
+</div>
 
 <style>
+  .scroll-wrapper {
+    overflow-y: hidden;
+  }
   ul {
     list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Scrolling Container */
+  .scrolling-container {
+    display: flex;
+    gap: var(--card-gap);
+    overflow-y: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: var(--card-gap);
+    padding-bottom: 1rem;
+  }
+  .scrolling-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Card Styling */
+  .card {
+    flex: 0 0 clamp(250px, 30vw, 400px); /* Responsive width */
+    padding: var(--card-padding);
+    background: var(--card-background);
+    color: var(--card-text-color);
+    border-radius: var(--card-border-radius);
+    scroll-snap-align: start;
   }
 </style>
