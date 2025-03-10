@@ -22,7 +22,6 @@ section {
   .content {
     display: grid;
     grid-template-columns: subgrid;
-    grid-template-rows: subgrid;
 
     > * + * {
       margin-top: 0.75rlh;
@@ -31,17 +30,17 @@ section {
 
   figure {
     display: grid;
-    grid-template-columns: subgrid;
-    grid-template-rows: subgrid;
+    grid-template-columns: auto;
     /* Place figure on the left side */
     grid-column: 1 / 2;
+
     grid-row: 1;
   }
 
   img {
     align-self: stretch;
     object-fit: cover;
-    grid-column: 1 / -1; /* Span all columns */
+    grid-column: 1 / -1;
     grid-row: 1; /* Place image in first row */
     /* aspect-ratio: 1.35; */
   }
@@ -53,7 +52,26 @@ section {
     background: var(--gray-100);
     padding: 0.4rlh 0.6rlh;
 
-    grid-column: 1 / -1; /* Span all columns */
+    grid-column: 1 / -1;
     grid-row: 2; /* Place caption in second row */
   }
 }
+
+/* @media (max-width: 600px) {
+    section {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+      text-align: center;
+
+      figure {
+        grid-column: 1;
+      }
+
+      .content {
+        grid-column: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  } */
